@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Form : AngularJS</title>
+        <script src="public/js/angular.js"></script>
+        <script src="public/js/form.js"></script>
+        <link rel="stylesheet" href="public/css/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="public/css/form.css"/>
+    </head>
+    <body>
+        <div ng-controller="formCtrl">
+            <form name="myForm" novalidate>
+                Name: <input type="text" ng-model="user.name" name="userName" required><br>
+                <div><span ng-show="myForm.userName.$error.required">Please enter your name!</span></div>
+                Email: <input type="email" ng-model="user.email" name="userEmail" required><br>
+                <div>
+                    <span ng-show="myForm.userEmail.$error.required">Please enter your email!</span>
+                    <span ng-show="myForm.userEmail.$error.email">Please enter valid email!</span>
+                </div>
+                <span ng-show=""></span>
+                <input type="button" value="Reset" class="btn" ng-click="resetFn()">
+                <button type="submit" class="btn" ng-click="submitFn()">Submit</button>
+            </form>
+            User: {{user | json}}
+            <br>
+            Master: {{master| json}}
+        </div>
+    </body>
+</html>

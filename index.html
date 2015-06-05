@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sample AngularJS App</title>
+    <script src="public/js/angular.js"></script>
+    <script type="text/javascript" src="public/js/app.js"></script>
+    <link rel="stylesheet" href="public/css/bootstrap/css/bootstrap.css">
+</head>
+<body>
+<h3>Sample AngularJS App</h3>
+
+<div ng-controller="appCtrl">
+    <h3>HELLO,</h3>
+    3 + 7 = {{3+7 | currency:"$"}}
+    <br>
+    3 + 7 = {{3+7 | number:3}}
+    <br>
+    {{'Fahad Sarwar' | uppercase}}
+    <br>
+    {{'Fahad Sarwar' | limitTo:6 | lowercase}}
+    <br>
+    {{[1,2,3,4,5,6,7] | limitTo:3}}
+    <br>
+    {{['q','w','e','r','t','y'] | orderBy}}
+    <br>
+    Date: {{date | date:'d/m/yy'}}
+    <br>
+    Time: {{date | date: 'h:m:s a'}}
+    <form>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Second Name</td>
+                <td>Salary</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="name in names | orderBy:'first'">
+                <td>{{name.first}}</td>
+                <td>{{name.last | advCustomFilter:true}}</td>
+                <td>{{name.salary}}</td>
+                <td>
+                    <input type="button" ng-click='destoryName(name)' class="btn" value="Destroy" />
+                </td>
+            </tr>
+            <tr>
+                <td><input type='text' placeholder='First Name' ng-model='firstName'/></td>
+                <td><input type='text' placeholder='Last Name' ng-model='lastName'/></td>
+                <td><input type='text' placeholder='Salary' ng-model='salary'/></td>
+                <td>
+                    <button type="submit" ng-click='addName()' class="btn">Add Name</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <div ng-controller="appCtrlCopy">
+        <h3>BYE,</h3>
+        <form>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Second Name</td>
+                    <td>Salary</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="name in names | filter:{salary:20000}:customFilter">
+                    <td>{{name.first}}</td>
+                    <td>{{name.last}}</td>
+                    <td>{{name.salary}}</td>
+                    <td>
+                        <input type="button" ng-click='destoryName(name)' class="btn" value="Destroy" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type='text' placeholder='First Name' ng-model='firstName'/></td>
+                    <td><input type='text' placeholder='Last Name' ng-model='lastName'/></td>
+                    <td><input type='text' placeholder='Salary' ng-model='salary'/></td>
+                    <td>
+                        <button type="submit" ng-click='addName()' class="btn">Add Name</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>
